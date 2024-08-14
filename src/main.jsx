@@ -4,10 +4,12 @@ import App from "./App.jsx";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import loginReducer from './features/loginFeature.jsx'
+import searchbar from './features/todoFeature.jsx'
 
 let store = configureStore({
   reducer: {
-    user: loginReducer,
+    user: loginReducer,  
+    input:searchbar
   },
 });
 createRoot(document.getElementById("root")).render(
