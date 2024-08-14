@@ -1,14 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { nanoid } from "@reduxjs/toolkit";
 
+let value=[]
 let slice = createSlice({
   name: "input",
-  initialState: {
-    value: { id: '', isChecked: false, title: input, deleted: false },
-  },
+  initialState: value,
   reducers: {
     add: (state, action) => {
-      state.value = action.payload;
+        const todo={
+            id: nanoid(),
+            isChecked: false,
+            title: action.payload,
+            deleted: false,
+          }
+          state.push(todo)
     },
+    
   },
 });
 
