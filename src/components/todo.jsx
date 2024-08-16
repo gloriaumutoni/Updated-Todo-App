@@ -15,8 +15,10 @@ const Todo = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(add(input));
-    setInput("");
+    if(input.trim()){
+      dispatch(add(input));
+      setInput("");
+    }
   }
 
   function handleChecked(id) {
@@ -31,19 +33,20 @@ const Todo = () => {
     <div>
       <h2 className="text-center font-medium text-8xl text-gray-200">todos</h2>
       <form onSubmit={handleSubmit}>
-        <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} />
+        <SearchBar handleChange={handleChange} value={input} handleSubmit={handleSubmit} />
+        </form>
         {todos &&
           todos.map((todo) => (
-            <div className="flex justify-between" key={todo.id}>
-              <input type="checkbox" onClick={() => handleChecked(todo.id)} />
-              <p>{todo.title}</p>
+            <div className="flex justify-between w-[40%] mx-auto pt-10" key={todo.id}>
+              <input type="checkbox" onClick={() => handleChecked(todo.id)}/>
+              <p className={`${todo.isChecked?'line-through':''}`}>{todo.title}</p>
               <i
                 onClick={() => handleDelete(todo.id)}
                 className="fa-solid fa-trash text-[#f90b3b] text-center pr-3"
               />
             </div>
           ))}
-      </form>
+      
     </div>
   );
 };
