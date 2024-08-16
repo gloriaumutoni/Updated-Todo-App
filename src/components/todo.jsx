@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "./searchbar";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { add, complete, deleteItems } from "../features/todoFeature";
-import Theme from "./theme";
+import { context } from "./theme";
 
 const Todo = () => {
   const todos = useSelector((state) => state.input);
   let dispatch = useDispatch();
-  console.log(todos);
   const [input, setInput] = useState("");
+  const { themes } = useContext(context);
 
   function handleChange(e) {
     setInput(e.target.value);
@@ -31,12 +31,11 @@ const Todo = () => {
   }
 
   return (
-    <div>
+    <div className={`${themes === "light" ? "bg-white text-black" : "bg-black text-white"}`}>
       <div className="text-center flex justify-between h-[40px] w-[30%] mx-auto">
-        <h2 className=" font-medium text-8xl text-gray-200">
+        <h2 className="font-medium text-8xl">
           todos
         </h2>
-        <Theme />
       </div>
       <form className="pt-16" onSubmit={handleSubmit}>
         <SearchBar
