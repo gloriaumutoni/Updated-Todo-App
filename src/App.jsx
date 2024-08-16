@@ -1,14 +1,13 @@
-import Login from "./components/login"
-import Todo from "./components/todo"
-
+import Login from "./components/login";
+import Todo from "./components/todo";
 
 function App() {
   return (
     <>
-     <Login/>
-     <Todo/>
+      <Login />
+      <Todo />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

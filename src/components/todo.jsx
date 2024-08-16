@@ -34,11 +34,8 @@ const Todo = () => {
         <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} />
         {todos &&
           todos.map((todo) => (
-            <div
-              className="flex justify-between"
-              key={todo.id}
-            >
-              <input type="checkbox" onClick={() => handleChecked(todo.id)}/>
+            <div className="flex justify-between" key={todo.id}>
+              <input type="checkbox" onClick={() => handleChecked(todo.id)} />
               <p>{todo.title}</p>
               <i
                 onClick={() => handleDelete(todo.id)}

@@ -5,6 +5,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import loginReducer from './features/loginFeature.jsx'
 import searchbar from './features/todoFeature.jsx'
+import './index.css';
 
 let store = configureStore({
   reducer: {
