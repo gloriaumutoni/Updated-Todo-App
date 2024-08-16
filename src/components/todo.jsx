@@ -31,11 +31,13 @@ const Todo = () => {
   }
 
   return (
-    <div className={`${themes === "light" ? "bg-white text-black" : "bg-black text-white"}`}>
+    <div
+      className={`${
+        themes === "light" ? "bg-white text-black" : "bg-black text-white"
+      }`}
+    >
       <div className="text-center flex justify-between h-[40px] w-[30%] mx-auto">
-        <h2 className="font-medium text-8xl">
-          todos
-        </h2>
+        <h2 className="font-medium text-8xl">todos</h2>
       </div>
       <form className="pt-16" onSubmit={handleSubmit}>
         <SearchBar
