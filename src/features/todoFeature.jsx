@@ -16,17 +16,20 @@ let slice = createSlice({
       state.push(todo);
     },
     complete: () => {
-        initialState.map((todo) =>
-              todo.id === id
-                ? {
-                    ...todo,
-                    isChecked: !todo.isChecked,
-                  }
-                : todo
-            )
+      initialState.map((todo) =>
+        todo.id === id
+          ? {
+              ...todo,
+              isChecked: !todo.isChecked,
+            }
+          : todo
+      );
+    },
+    deleteItems: (state, action) => {
+      state.filter((obj) => obj.id !== action.payload);
     },
   },
 });
 
 export default slice.reducer;
-export const { add, complete } = slice.actions;
+export const { add, complete,deleteItems } = slice.actions;

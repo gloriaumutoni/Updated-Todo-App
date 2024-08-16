@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "./searchbar";
 import { useState } from "react";
-import { add, complete } from "../features/todoFeature";
+import { add, complete, deleteItems } from "../features/todoFeature";
 
 const Todo = () => {
   const todos = useSelector((state) => state.input);
@@ -21,19 +21,32 @@ const Todo = () => {
   }
 
   function handleChecked(id) {
-    dispatch(complete(id))    
+    dispatch(complete(id));
+  }
+
+  function handleDelete(id) {
+    dispatch(deleteItems(id));
   }
 
   return (
     <div>
       <h2 className="text-center font-medium text-8xl text-gray-200">todos</h2>
       <form onSubmit={handleSubmit}>
-        <SearchBar handleChange={handleChange}  handleSubmit={handleSubmit}/>
-        {todos && todos.map((todo) => <p 
-        key={todo.id}
-        isChecked={() => handleChecked(items.id)}
-        >
-            {todo.title}</p>)}
+        <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} />
+        {todos &&
+          todos.map((todo) => (
+            <div
+              className="flex justify-between"
+              key={todo.id}
+              isChecked={() => handleChecked(items.id)}
+            >
+              <input type="checkbox" /> <p>{todo.title}</p>
+              <i
+                onClick={() => handleDelete(todo.id)}
+                className="fa-solid fa-trash text-[#f90b3b] text-center pr-3"
+              />
+            </div>
+          ))}
       </form>
     </div>
   );
