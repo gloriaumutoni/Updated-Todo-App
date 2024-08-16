@@ -15,9 +15,9 @@ let slice = createSlice({
       };
       state.push(todo);
     },
-    complete: () => {
-      initialState.map((todo) =>
-        todo.id === id
+    complete: (state, action) => {
+     return state.map((todo) =>
+        todo.id === action.payload
           ? {
               ...todo,
               isChecked: !todo.isChecked,
@@ -26,10 +26,10 @@ let slice = createSlice({
       );
     },
     deleteItems: (state, action) => {
-      state.filter((obj) => obj.id !== action.payload);
+      return state.filter((obj) => obj.id !== action.payload);
     },
   },
 });
 
 export default slice.reducer;
-export const { add, complete,deleteItems } = slice.actions;
+export const { add, complete, deleteItems } = slice.actions;

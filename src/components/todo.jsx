@@ -8,7 +8,6 @@ const Todo = () => {
   let dispatch = useDispatch();
   console.log(todos);
   const [input, setInput] = useState("");
-  //   const [todo, setTodo] = useState(todos);
 
   function handleChange(e) {
     setInput(e.target.value);
@@ -38,9 +37,9 @@ const Todo = () => {
             <div
               className="flex justify-between"
               key={todo.id}
-              isChecked={() => handleChecked(items.id)}
             >
-              <input type="checkbox" /> <p>{todo.title}</p>
+              <input type="checkbox" onClick={() => handleChecked(todo.id)}/>
+              <p>{todo.title}</p>
               <i
                 onClick={() => handleDelete(todo.id)}
                 className="fa-solid fa-trash text-[#f90b3b] text-center pr-3"
