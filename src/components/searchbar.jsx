@@ -8,7 +8,7 @@ const SearchBar = (props) => {
           value={props.value}
           className="text-black relative pl-6 border-2 rounded-3xl shadow-lg shadow-slate-500 w-[50%] py-3"
         />
-        <i onClick={props.handleSubmit} className="fa-solid fa-circle-plus absolute right-[27%] top-[16%] text-[#58d0ac] text-2xl"></i>
+        <i onClick={props.handleSubmit} className="fa-solid fa-circle-plus absolute right-[27%] top-[30%] text-[#58d0ac] text-2xl"></i>
       </div>
     );
   };
